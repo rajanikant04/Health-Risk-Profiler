@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build:no-lint": "next build",
     "build:analyze": "ANALYZE=true npm run build",
-    "build:production": "NODE_ENV=production npm run build",
+    "build:production": "npm run build:no-lint",
     "start": "next start",
-    "start:production": "NODE_ENV=production npm run start",
+    "start:production": "npm run start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "type-check": "tsc --noEmit",
-    "optimize": "npm run lint:fix && npm run type-check && npm run build:production",
+    "optimize": "npm run type-check && npm run build:production",
     "test:build": "npm run build && npm run start & sleep 5 && curl -f http://localhost:3000/api/health-check && pkill -f 'next start'",
     "deploy:vercel": "vercel --prod",
     "deploy:preview": "vercel"

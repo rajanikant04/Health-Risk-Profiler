@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:no-lint",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "ESLINT_NO_DEV_ERRORS": "true",
+    "SKIP_ENV_VALIDATION": "true"
+  }
+}

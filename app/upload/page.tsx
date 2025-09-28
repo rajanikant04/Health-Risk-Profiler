@@ -86,7 +86,7 @@ export default function UploadPage() {
           // Store formatted OCR result in sessionStorage
           sessionStorage.setItem('ocrResult', JSON.stringify(formattedResult));
           
-          updateProgress(100, 'Complete!');
+          updateProgress(100);
           
           // Navigate to results
           setTimeout(() => {

@@ -274,16 +274,12 @@ function processSurveyData(surveyData: SurveyResponse): RiskAssessment {
     riskLevel = 'high';
   }
 
-  // Generate recommendations
-  const recommendations = generateRecommendations(surveyData, riskLevel);
-
   return {
     risk_level: riskLevel,
     score: Math.min(100, score), // Cap at 100
     rationale: rationale.length > 0 ? rationale : ['Assessment based on provided health information'],
     confidence: 0.85, // Default confidence level
     contributing_factors: contributingFactors,
-    recommendations: recommendations
   };
 }
 
@@ -291,6 +287,7 @@ function ResultsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [riskAssessment, setRiskAssessment] = useState<RiskAssessment | null>(null);
+  const [recommendations, setRecommendations] = useState<Recommendation[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
   const [source, setSource] = useState<'survey' | 'ocr'>('survey');
@@ -315,12 +312,16 @@ function ResultsContent() {
               // Process OCR extracted data into risk assessment
               const extractedData = parsedResult.data.parsed_data.answers;
               const processedAssessment = processSurveyData(extractedData);
+              const generatedRecommendations = generateRecommendations(extractedData, processedAssessment.risk_level);
               setRiskAssessment(processedAssessment);
+              setRecommendations(generatedRecommendations);
             } else if (parsedResult.status === 'success' && parsedResult.data) {
               // Handle API response format
               const extractedData = parsedResult.data.parsed_data?.answers || {};
               const processedAssessment = processSurveyData(extractedData);
+              const generatedRecommendations = generateRecommendations(extractedData, processedAssessment.risk_level);
               setRiskAssessment(processedAssessment);
+              setRecommendations(generatedRecommendations);
             } else {
               setError('OCR processing incomplete. Please try uploading the document again.');
             }
@@ -335,11 +336,20 @@ function ResultsContent() {
           if (surveyResult) {
             const parsedResult = JSON.parse(surveyResult);
             setRiskAssessment(parsedResult);
+            // Try to get survey data to generate recommendations
+            const surveyData = sessionStorage.getItem('surveyData');
+            if (surveyData) {
+              const parsedData = JSON.parse(surveyData);
+              const generatedRecommendations = generateRecommendations(parsedData, parsedResult.risk_level);
+              setRecommendations(generatedRecommendations);
+            }
           } else if (surveyData) {
             // Process raw survey data into risk assessment
             const parsedData = JSON.parse(surveyData);
             const processedAssessment = processSurveyData(parsedData);
+            const generatedRecommendations = generateRecommendations(parsedData, processedAssessment.risk_level);
             setRiskAssessment(processedAssessment);
+            setRecommendations(generatedRecommendations);
           } else {
             setError('No assessment results found. Please complete a health survey first.');
           }
@@ -517,7 +527,7 @@ function ResultsContent() {
         </div>
 
         {/* Personalized Recommendations */}
-        {riskAssessment.recommendations && riskAssessment.recommendations.length > 0 && (
+        {recommendations && recommendations.length > 0 && (
           <div className="mb-8">
             <Card className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 border-purple-500/20">
               <div className="p-6">
@@ -530,7 +540,7 @@ function ResultsContent() {
                 </p>
                 
                 <div className="space-y-6">
-                  {riskAssessment.recommendations.map((recommendation) => (
+                  {recommendations.map((recommendation) => (
                     <div key={recommendation.id} className="bg-gray-800/30 border border-gray-600 rounded-lg p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">

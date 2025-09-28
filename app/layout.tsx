@@ -21,12 +21,16 @@ export const metadata: Metadata = {
   description: "Advanced health risk assessment with OCR technology and personalized recommendations",
   keywords: "health, risk assessment, OCR, AI, medical, wellness, health screening",
   authors: [{ name: "Health Tech Solutions" }],
-  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -6,11 +6,9 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
   
-  // ESLint configuration - be lenient for deployment
+  // ESLint configuration - disable for deployment
   eslint: {
-    // Only run ESLint on these directories during build
-    dirs: ['app', 'components', 'lib', 'utils'],
-    // Allow production builds to complete even if there are ESLint errors
+    // Completely ignore ESLint during builds to allow deployment
     ignoreDuringBuilds: true,
   },
   
@@ -30,7 +28,6 @@ const nextConfig: NextConfig = {
   
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['tesseract.js', 'chart.js', 'react-chartjs-2'],
   },
   

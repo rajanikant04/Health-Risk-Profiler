@@ -76,7 +76,7 @@ export async function GET() {
       },
       health: {
         status: usagePercentage > 80 ? 'warning' : 'healthy',
-        last_error: metrics.lastError,
+        last_error: metrics.lastError || undefined,
       },
     };
 
