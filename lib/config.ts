@@ -62,7 +62,7 @@ export const isProduction = config.app.env === 'production';
 export const isTest = config.app.env === 'test';
 
 // Logging helper
-export function log(level: 'info' | 'warn' | 'error', message: string, data?: any) {
+export function log(level: 'info' | 'warn' | 'error', message: string, data?: unknown) {
   if (isDevelopment || config.development.enableDebugLogs) {
     const timestamp = new Date().toISOString();
     console[level](`[${timestamp}] [${level.toUpperCase()}] ${message}`, data || '');

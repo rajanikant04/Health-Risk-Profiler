@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card } from '@/components/ui/BasicComponents';
 
 export default function Home() {
@@ -54,10 +55,12 @@ export default function Home() {
           <div className="relative z-10">
             <div className="mb-8 flex flex-col items-center">
               <div className="mb-6">
-                <img 
+                <Image 
                   src="/health-logo-hero.svg" 
                   alt="Health Risk Profiler" 
-                  className="w-20 h-20 mx-auto animate-pulse"
+                  width={80}
+                  height={80}
+                  className="mx-auto animate-pulse"
                 />
               </div>
               <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 text-blue-400 text-sm font-medium">

@@ -28,7 +28,7 @@ interface HealthStatus {
 let healthCheckCache: { timestamp: number; data: HealthStatus } | null = null;
 const CACHE_DURATION = 30000; // 30 seconds
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const startTime = Date.now();
     
@@ -50,7 +50,7 @@ export async function GET(request: NextRequest) {
     try {
       // Quick check if Tesseract.js is available
       await import('tesseract.js');
-    } catch (error) {
+    } catch {
       ocrStatus = 'unhealthy';
     }
 

@@ -18,21 +18,21 @@ export default function UploadPage() {
 
     try {
       // Simulate OCR processing with progress updates
-      const updateProgress = (value: number, message: string) => {
+      const updateProgress = (value: number) => {
         setProgress(value);
         // You could add a status message state here if needed
       };
 
-      updateProgress(25, 'Uploading file...');
+      updateProgress(25);
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      updateProgress(50, 'Processing image...');
+      updateProgress(50);
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      updateProgress(75, 'Extracting text...');
+      updateProgress(75);
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      updateProgress(90, 'Analyzing data...');
+      updateProgress(90);
       await new Promise(resolve => setTimeout(resolve, 800));
 
       // Convert file to base64 for processing
@@ -327,7 +327,7 @@ export default function UploadPage() {
                   Prefer Manual Entry?
                 </h3>
                 <p className="text-gray-300 mb-4">
-                  If you don't have a form to upload or prefer to enter information manually, 
+                  If you don&apos;t have a form to upload or prefer to enter information manually, 
                   you can complete our interactive health survey instead.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">

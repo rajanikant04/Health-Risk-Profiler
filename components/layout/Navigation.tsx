@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -23,10 +24,12 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <div className="flex items-center justify-center">
-              <img 
+              <Image 
                 src="/health-logo.svg" 
                 alt="Health Risk Profiler Logo" 
-                className="w-10 h-10 hover:scale-105 transition-transform duration-200"
+                width={40}
+                height={40}
+                className="hover:scale-105 transition-transform duration-200"
               />
             </div>
             <div className="hidden sm:block">

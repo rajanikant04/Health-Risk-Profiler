@@ -2,9 +2,9 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { RiskProfile } from '@/components/results/RiskProfile';
-import { RecommendationList } from '@/components/results/RecommendationList';
-import { Card, Button, Alert } from '@/components/ui/BasicComponents';
+import { Card, Button } from '@/components/ui/BasicComponents';
 import { RiskAssessment, SurveyResponse, HealthFactor, Recommendation } from '@/types';
 
 // Function to generate personalized recommendations
@@ -413,7 +413,7 @@ function ResultsContent() {
             <div className="p-8 text-center">
               <h2 className="text-2xl font-bold text-white mb-4">No Assessment Data</h2>
               <p className="text-gray-400 mb-6">
-                We couldn't find any assessment data to display results.
+                We couldn&apos;t find any assessment data to display results.
               </p>
               <Button onClick={() => router.push('/assessment')}>
                 Start New Assessment
@@ -440,7 +440,7 @@ function ResultsContent() {
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             Based on {source === 'ocr' ? 'your uploaded health form' : 'your survey responses'}, 
-            here's your personalized health risk profile and recommendations.
+            here&apos;s your personalized health risk profile and recommendations.
           </p>
         </div>
 
@@ -530,7 +530,7 @@ function ResultsContent() {
                 </p>
                 
                 <div className="space-y-6">
-                  {riskAssessment.recommendations.map((recommendation, index) => (
+                  {riskAssessment.recommendations.map((recommendation) => (
                     <div key={recommendation.id} className="bg-gray-800/30 border border-gray-600 rounded-lg p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex-1">
@@ -641,7 +641,7 @@ Risk Score: ${riskAssessment.score}
 Confidence Score: ${Math.round(riskAssessment.confidence * 100)}%
 
 Contributing Factors:
-${riskAssessment.contributing_factors.map((factor: any) => `- ${factor.name}: ${factor.severity} (${factor.description})`).join('\n')}
+${riskAssessment.contributing_factors.map((factor: HealthFactor) => `- ${factor.name}: ${factor.severity} (${factor.description})`).join('\n')}
 
 Risk Rationale:
 ${riskAssessment.rationale.map((reason: string, i: number) => `${i + 1}. ${reason}`).join('\n')}

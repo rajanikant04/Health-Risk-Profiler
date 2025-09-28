@@ -83,10 +83,10 @@ export async function OPTIONS() {
   });
 }
 
-// Add CORS headers to all responses
-function addCorsHeaders(response: NextResponse) {
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
-  return response;
-}
+// Add CORS headers to all responses (currently unused but kept for future use)
+// function addCorsHeaders(response: NextResponse) {
+//   response.headers.set('Access-Control-Allow-Origin', '*');
+//   response.headers.set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+//   response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+//   return response;
+// }

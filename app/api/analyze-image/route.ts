@@ -3,7 +3,6 @@ import { AnalyzeImageRequestSchema } from '@/lib/validation';
 import { processOCRResult } from '@/utils/textParser';
 import { performEnhancedOCR } from '@/utils/ocrProcessor';
 import { ERROR_MESSAGES, FILE_UPLOAD_CONFIG } from '@/lib/constants';
-import { OCRResult } from '@/types';
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,7 +24,7 @@ export async function POST(request: NextRequest) {
     const { imageData, filename, mimeType } = validation.data;
 
     // Validate file type
-    if (!FILE_UPLOAD_CONFIG.ACCEPTED_TYPES.includes(mimeType as any)) {
+    if (!FILE_UPLOAD_CONFIG.ACCEPTED_TYPES.includes(mimeType as (typeof FILE_UPLOAD_CONFIG.ACCEPTED_TYPES)[number])) {
       return NextResponse.json(
         { 
           status: 'error', 

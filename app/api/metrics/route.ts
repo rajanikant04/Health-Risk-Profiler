@@ -42,7 +42,7 @@ const metrics = {
   lastError: null as string | null,
 };
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Get current system metrics
     const memoryUsage = process.memoryUsage();
