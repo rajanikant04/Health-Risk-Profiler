@@ -52,14 +52,7 @@ export default function Home() {
           </div>
 
           <div className="relative z-10">
-            <div className="mb-8 flex flex-col items-center">
-              <div className="mb-6">
-                <img 
-                  src="/health-logo-hero.svg" 
-                  alt="Health Risk Profiler" 
-                  className="w-20 h-20 mx-auto animate-pulse"
-                />
-              </div>
+            <div className="mb-8">
               <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-2 text-blue-400 text-sm font-medium">
                 <span>🚀</span>
                 <span>AI-Powered Health Technology</span>
@@ -108,7 +101,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Advanced Health Technology
             </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
               Combining artificial intelligence, OCR technology, and medical expertise 
               to provide comprehensive health risk assessments.
             </p>
@@ -117,11 +110,11 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <Link key={index} href={feature.href}>
-                <Card className="!bg-gray-800 border-gray-700 hover:!bg-gray-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer h-full text-white">
+                <Card className="bg-gray-800/50 border-gray-700 hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer h-full">
                   <div className="text-center p-6">
                     <div className="text-4xl mb-4">{feature.icon}</div>
                     <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                    <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                    <p className="text-gray-400 leading-relaxed">{feature.description}</p>
                   </div>
                 </Card>
               </Link>
@@ -138,7 +131,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
                 Why Choose Our Platform?
               </h2>
-              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
                 Our platform combines the latest in AI technology with medical expertise 
                 to provide you with accurate, personalized health insights that you can trust.
               </p>
@@ -174,7 +167,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">Real-time Analysis</h4>
-                      <p className="text-gray-300 text-sm">Instant risk assessment results</p>
+                      <p className="text-gray-400 text-sm">Instant risk assessment results</p>
                     </div>
                   </div>
 
@@ -184,7 +177,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">Privacy First</h4>
-                      <p className="text-gray-300 text-sm">Your data never leaves your device</p>
+                      <p className="text-gray-400 text-sm">Your data never leaves your device</p>
                     </div>
                   </div>
 
@@ -194,7 +187,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-white">Personalized Results</h4>
-                      <p className="text-gray-300 text-sm">Tailored recommendations just for you</p>
+                      <p className="text-gray-400 text-sm">Tailored recommendations just for you</p>
                     </div>
                   </div>
                 </div>
@@ -211,7 +204,7 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Ready to Start Your Health Journey?
             </h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               Take control of your health with our comprehensive risk assessment. 
               Get started in just a few minutes and receive personalized insights.
             </p>

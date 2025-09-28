@@ -1,0 +1,57 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heroAccentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:0.9" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer glow circle -->
+  <circle cx="40" cy="40" r="38" fill="none" stroke="url(#heroBgGradient)" stroke-width="2" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- Main background circle -->
+  <circle cx="40" cy="40" r="35" fill="url(#heroBgGradient)" stroke="#1E293B" stroke-width="2"/>
+  
+  <!-- Medical cross -->
+  <path d="M40 15 L40 65 M15 40 L65 40" 
+        stroke="url(#heroAccentGradient)" 
+        stroke-width="5" 
+        stroke-linecap="round"/>
+  
+  <!-- Heart symbol overlay -->
+  <path d="M40 32 C37 27 30 27 30 33 C30 39 40 46 40 46 S50 39 50 33 C50 27 43 27 40 32 Z" 
+        fill="url(#heroAccentGradient)" 
+        opacity="0.95"/>
+  
+  <!-- Pulse effect elements -->
+  <circle cx="25" cy="25" r="3" fill="#60A5FA" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="55" cy="25" r="3" fill="#60A5FA" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="25" cy="55" r="3" fill="#60A5FA" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="55" cy="55" r="3" fill="#60A5FA" opacity="0.6">
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Central pulse -->
+  <circle cx="40" cy="40" r="6" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.4">
+    <animate attributeName="r" values="6;12;6" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>
